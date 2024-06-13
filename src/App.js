@@ -1,15 +1,16 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { Toaster, toast } from 'sonner';
 const tg = window.Telegram.WebApp;
 
 const cards = [
   { id: 1, label: 'First', benefit: 1000, interval: 10000 },
   { id: 2, label: 'Second', benefit: 1200, interval: 20000 },
   { id: 3, label: 'Third', benefit: 50, interval: 9000000 },
+  { id: 4, label: 'Fourth', benefit: 99, interval: 1000 },
 ];
 function App() {
   const [userBalance, setUserBalance] = useState(500);
-
   useEffect(() => {
     tg.ready();
   }, []);
@@ -23,6 +24,7 @@ function App() {
     const { benefit, interval } = card;
     setInterval(() => {
       setUserBalance((prev) => prev + benefit);
+      toast(`Вы получили ${benefit} на ваш счет!}`);
     }, interval);
   }
   return (
