@@ -29,22 +29,26 @@ function App() {
     <div className='App'>
       <main className='w-full flex flex-col items-center'>
         <p className='font-bold mb-4'>Баланс:{userBalance}</p>
-        <div>
-          <ul className='flex items-center gap-[10px]'>
-            {cards.map((card) => {
-              return (
-                <li key={card.id}>
-                  <button
-                    onClick={onCardClick}
-                    className='rounded-xl border-[2px] border-red-500 p-3'
-                  >
-                    {card.label}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <ul className='flex items-center gap-[10px]'>
+          {cards.map((card) => {
+            return (
+              <li key={card.id}>
+                <button
+                  onClick={() => onCardClick(card)}
+                  className='rounded-xl border-[2px] border-red-500 p-3'
+                >
+                  {card.label}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          className='mt-4 p-4 bg-black text-white rounded-[50px]'
+          onClick={onClose}
+        >
+          Close
+        </button>
       </main>
     </div>
   );
